@@ -32,7 +32,7 @@ contract RandomNumbers is VRFConsumerBaseV2Plus {
     uint32 callbackGasLimit = 2500000;
     uint16 requestConfirmations = 3;
     uint32 numWords = 3; //how many numbers were returned
-    uint256 count =1;
+    uint256 count = 1;
     uint256[] public s_randomNumber;
     address public Upkeep;
 
