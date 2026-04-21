@@ -32,7 +32,7 @@ contract RandomNumbers is VRFConsumerBaseV2Plus {
     uint32 callbackGasLimit = 2500000;
     uint16 requestConfirmations = 3;
     uint32 numWords = 3; //how many numbers were returned
-    uint256 s_count = 1;
+    uint256 count = 1;
     uint256[] public s_randomNumber;
     address public Upkeep;
 
@@ -76,6 +76,10 @@ contract RandomNumbers is VRFConsumerBaseV2Plus {
         }
         s_count++;
         emit RandomWordsFulfilled();
+    }
+
+    function getCount() public view returns (uint256) {
+        return count;
     }
 
     function getRandomNumbers() public view returns (uint256[] memory) {
