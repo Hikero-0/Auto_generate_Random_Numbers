@@ -32,7 +32,7 @@ contract RandomNumbers is VRFConsumerBaseV2Plus {
     uint32 callbackGasLimit = 2500000;
     uint16 requestConfirmations = 3;
     uint32 numWords = 3; //how many numbers were returned
-    uint256 count = 1;
+    uint256 count =1;
     uint256[] public s_randomNumber;
     address public Upkeep;
 
@@ -72,9 +72,9 @@ contract RandomNumbers is VRFConsumerBaseV2Plus {
         for (uint256 i = 0; i < randomWords.length; i++) {
             uint256 d30Value = (randomWords[i] % 30) + 1;
             s_randomNumber.push(d30Value);
-            s_rollDiceHistory[s_count].push(d30Value);
+            s_rollDiceHistory[count].push(d30Value);
         }
-        s_count++;
+        count;
         emit RandomWordsFulfilled();
     }
 
@@ -87,7 +87,7 @@ contract RandomNumbers is VRFConsumerBaseV2Plus {
     }
 
     function getRollDiceHistory(uint256 start, uint256 end) public view returns (uint256[][] memory) {
-        require(end <= s_count, "out of range");
+        require(end <= count, "out of range");
         require(start <= end, "invalid range");
 
         uint256[][] memory history = new uint256[][](end - start + 1);
